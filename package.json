@@ -1,8 +1,8 @@
 {
   "name": "@mightyplow/prefetcher",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "library to simplify the usage of html prerender methods",
-  "main": "prefetcher.js",
+  "main": "dist/prefetcher.common.js",
   "keywords": [
     "http",
     "prefetch",
@@ -10,15 +10,33 @@
   ],
   "author": "mightyplow@gmail.com",
   "files": [
-    "prefetcher.js"
+    "dist"
   ],
   "license": "ISC",
+
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/mightyplow/prefetcher.git"
+  },
+
   "scripts": {
+    "common:base": "babel --presets es2015 src/prefetcher.js",
+    "common": "run-s common:base -- -o dist/prefetcher.common.js",
+    "common:min": "run-s -s common:base | uglifyjs -m -c -o dist/prefetcher.common.min.js",
+
+    "standalone:base": "browserify src/prefetcher.js --standalone prefetcher -t [ babelify --presets [ es2015 ] ]",
+    "standalone": "run-s -s standalone:base > dist/prefetcher.js",
+    "standalone:min": "run-s -s standalone:base | uglifyjs -m -c -o dist/prefetcher.min.js",
+
     "prepublish": "npm run build",
-    "build": "babel --presets es2015 src/prefetcher.js -o prefetcher.js"
+    "prebuild": "mkdir -p dist",
+    "build": "run-p common common:min"
   },
   "dependencies": {
     "babel-cli": "^6.24.1",
-    "babel-preset-es2015": "^6.24.1"
+    "babel-preset-es2015": "^6.24.1",
+    "babelify": "^7.3.0",
+    "browserify": "^14.3.0",
+    "npm-run-all": "^4.0.2"
   }
 }
