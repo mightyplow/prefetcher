@@ -1,6 +1,6 @@
 {
   "name": "@mightyplow/prefetcher",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "library to simplify the usage of html prerender methods",
   "main": "dist/prefetcher.common.js",
   "keywords": [

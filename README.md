@@ -37,6 +37,8 @@ import { prefetch, preload, prerender, prefetchDns, preconnect } from '@mightypl
 You can also use the library directly in your html document. All you have to do, is
 to load the prefetcher[.min].js file from the dist folder.
 
+It will create a global object call prefetcher, which contains all the available methods.
+
 ### methods
 
 Following methods are available:
