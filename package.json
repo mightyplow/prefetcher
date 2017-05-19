@@ -21,7 +21,7 @@
 
   "scripts": {
     "common:base": "babel --presets es2015 src/prefetcher.js",
-    "common": "run-s common:base -- -o dist/prefetcher.common.js",
+    "common": "npm run common:base -- -o dist/prefetcher.common.js",
     "common:min": "run-s -s common:base | uglifyjs -m -c -o dist/prefetcher.common.min.js",
 
     "standalone:base": "browserify src/prefetcher.js --standalone prefetcher -t [ babelify --presets [ es2015 ] ]",
@@ -29,8 +29,8 @@
     "standalone:min": "run-s -s standalone:base | uglifyjs -m -c -o dist/prefetcher.min.js",
 
     "prepublish": "npm run build",
-    "prebuild": "mkdir -p dist",
-    "build": "run-p common common:min"
+    "prebuild": "rm -rf dist && mkdir -p dist",
+    "build": "run-p common common:min standalone standalone:min"
   },
   "dependencies": {
     "babel-cli": "^6.24.1",
