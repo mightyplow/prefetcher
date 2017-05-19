@@ -1,12 +1,13 @@
 {
   "name": "@mightyplow/prefetcher",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "library to simplify the usage of html prerender methods",
   "main": "dist/prefetcher.common.js",
   "keywords": [
-    "http",
+    "html",
     "prefetch",
-    "performance"
+    "performance",
+    "resource hint"
   ],
   "author": "mightyplow@gmail.com",
   "files": [
